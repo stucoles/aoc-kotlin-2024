@@ -45,17 +45,17 @@ fun main() {
 
     fun part1(input: List<String>): Int {
         val (followableMap, listOfUpdates) = parseInput(input)
-        val sum = listOfUpdates.map {
+        val sum = listOfUpdates.sumOf {
             if (isValidUpdate(it, followableMap)) it.elementAt(it.lastIndex / 2)
             else 0
-        }.sum()
+        }
         return sum
     }
 
     fun part2(input: List<String>): Int {
         val (followableMap, listOfUpdates) = parseInput(input)
         return listOfUpdates.filter { !isValidUpdate(it, followableMap) }
-            .map { fixUpdate(it, followableMap).elementAt(it.lastIndex / 2) }.sum()
+            .sumOf { fixUpdate(it, followableMap).elementAt(it.lastIndex / 2) }
     }
 
     val testInput = readInput("Day05_test")
