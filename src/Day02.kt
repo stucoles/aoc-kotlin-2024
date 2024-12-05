@@ -30,8 +30,8 @@ fun main() {
 
     // Or read a large test input from the `src/Day01_test.txt` file:
     val testInput = readInput("Day02_test")
-    //check(part1(testInput) == 2) { "part1 - testInput should return 2, returned something else" }
-    //check(part2(testInput) == 4)
+    check(part1(testInput) == 2) { "part1 - testInput should return 2, returned something else" }
+    check(part2(testInput) == 4)
 
     // Read the input from the `src/Day01.txt` file.
     val input = readInput("Day02")
