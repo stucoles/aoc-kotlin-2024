@@ -1,17 +1,4 @@
-import java.lang.reflect.Array.set
-
 fun main() {
-
-    fun getInputAsGrid(input: List<String>) : List<List<Char>> {
-        val returnList = mutableListOf<MutableList<Char>>()
-        for (line in input) {
-            returnList.add(mutableListOf())
-            for (char in line) {
-                returnList.last().add(char)
-            }
-        }
-        return returnList
-    }
 
     fun checkForXmas(input: List<List<Char>>, x: Int, y: Int, maxX: Int, maxY: Int, direction: (Int, Int) -> Pair<Int, Int>): Int {
         fun outOfBounds(newX: Int, newY: Int) = newX < 0 || newY < 0 || newX >= maxX || newY >= maxY
@@ -36,15 +23,6 @@ fun main() {
         }
         return 1
     }
-
-    fun goSouth(x: Int, y: Int): Pair<Int, Int> = Pair(x + 1, y)
-    fun goNorth(x: Int, y: Int): Pair<Int, Int> = Pair(x - 1, y)
-    fun goEast(x: Int, y: Int): Pair<Int, Int> = Pair(x, y + 1)
-    fun goWest(x: Int, y: Int): Pair<Int, Int> = Pair(x, y - 1)
-    fun goNortheast(x: Int, y: Int): Pair<Int, Int> = Pair(x - 1, y + 1)
-    fun goNorthwest(x: Int, y: Int): Pair<Int, Int> = Pair(x - 1, y - 1)
-    fun goSoutheast(x: Int, y: Int): Pair<Int, Int> = Pair(x + 1, y + 1)
-    fun goSouthwest(x: Int, y: Int): Pair<Int, Int> = Pair(x + 1, y - 1)
 
     fun part1(input: List<List<Char>>): Int {
         val maxX = input.size
