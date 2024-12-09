@@ -47,6 +47,10 @@ enum class Direction {
     NORTH, SOUTH, WEST, EAST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST
 }
 
+fun indexIsInBounds(index: Pair<Int, Int>, grid: List<List<Any>>): Boolean =
+    index.first >= 0 && index.first < grid.size && index.second >= 0 && index.second < grid.first().size
+
+
 /**
  * Converts string to md5 hash.
  */
@@ -61,7 +65,7 @@ fun <E> Iterable<E>.indexesOf(e: E)
 fun <E> Iterable<Set<E>>.nonEmptyIndexes()
         = mapIndexedNotNull{ index, elem -> index.takeIf{ elem.isNotEmpty() } }
 
-fun <T> List<List<T>>.println() = forEach { it.println() }
+fun <T> List<List<T>>.println() = forEach { it.forEach { print(it) }; print('\n') }
 /**
  * The cleaner shorthand for printing output.
  */

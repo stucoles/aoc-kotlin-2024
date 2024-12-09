@@ -1,5 +1,3 @@
-import kotlin.time.measureTime
-
 fun main() {
 
     fun findCoordinateOfIndex(input: Int, grid: List<List<Any>>): Pair<Int, Int> {
@@ -39,10 +37,6 @@ fun main() {
         Direction.WEST to '<'
     )
 
-    fun indexIsInBounds(index: Pair<Int, Int>, grid: List<List<Any>>): Boolean =
-        index.first >= 0 && index.first < grid.size && index.second >= 0 && index.second < grid.first().size
-
-
     /**
      * Send the guard through the grid, and return the index where the guard leaves the grid. If the guard gets
      * caught in an infinite loop, return (-1, -1)
@@ -51,7 +45,7 @@ fun main() {
         val startIndex = findStartPosition(grid)
         var direction = Direction.NORTH
         var move = ::goNorth
-        var index = startIndex;
+        var index = startIndex
         val directionGrid = grid.map { it -> it.map { mutableSetOf<Char>() } }
         fun getNextIndex(grid: List<List<Char>>, currentIndex: Pair<Int, Int>): Pair<Int, Int> {
             var nextindex = move(currentIndex.first, currentIndex.second)

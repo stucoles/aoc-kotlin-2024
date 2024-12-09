@@ -47,7 +47,7 @@ fun main() {
     fun part2(input: List<String>): Long {
         return input.map { preprocess(it) }.filter { evaluateWithConcatenation(it.first, it.second.first(), it.second.subList(1, it.second.size)) }.map { it.first }.sum()
     }
-    
+
     val testInput = readInput("Day07_test")
     check(part1(testInput) == 3749L) { "part1 - testInput should return 3749, returned ${part1(testInput)}" }
     check(part2(testInput) == 11387L) { "part2 - testInput should return 11387, returned ${part2(testInput)}" }
