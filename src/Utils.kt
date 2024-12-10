@@ -58,9 +58,13 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
     .toString(16)
     .padStart(32, '0')
 
-/** Get all indexes of an interable **/
+/** Get all indexes of a given element, e, in an Interable. **/
 fun <E> Iterable<E>.indexesOf(e: E)
 = mapIndexedNotNull{ index, elem -> index.takeIf{ elem == e } }
+
+/** Get all indexes that do not match a given element, e, in an Interable. **/
+fun <E> Iterable<E>.indexesOfNot(e: E)
+        = mapIndexedNotNull{ index, elem -> index.takeIf{ elem != e } }
 
 fun <E> Iterable<Set<E>>.nonEmptyIndexes()
         = mapIndexedNotNull{ index, elem -> index.takeIf{ elem.isNotEmpty() } }
