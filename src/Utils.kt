@@ -43,6 +43,11 @@ fun goNorthwest(x: Int, y: Int): Pair<Int, Int> = Pair(x - 1, y - 1)
 fun goSoutheast(x: Int, y: Int): Pair<Int, Int> = Pair(x + 1, y + 1)
 fun goSouthwest(x: Int, y: Int): Pair<Int, Int> = Pair(x + 1, y - 1)
 
+fun goSouthPoint(point: Pair<Int, Int>): Pair<Int, Int> = goSouth(point.first, point.second)
+fun goNorthPoint(point: Pair<Int, Int>): Pair<Int, Int> = goNorth(point.first, point.second)
+fun goEastPoint(point: Pair<Int, Int>): Pair<Int, Int> = goEast(point.first, point.second)
+fun goWestPoint(point: Pair<Int, Int>): Pair<Int, Int> = goWest(point.first, point.second)
+
 enum class Direction {
     NORTH, SOUTH, WEST, EAST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST
 }

@@ -75,20 +75,14 @@ fun main() {
 
 
         //println("Continuous free space: ${continuousFreeSpace}")
-
         return decompacted.mapIndexed { index, value -> if (value == -1) 0 else index.toLong() * value.toLong() }.sum()
     }
 
-    val easyInput = readInput("Day09_easy").first()
-    //part1(easyInput).println()
-    //cheatPart1(easyInput).println()
-
-
     val testInput = getDecompactedFilesystem(readInput("Day09_test").first())
-    //check(part1(testInput) == 1928L) { "part1 - testInput should return 1928, returned ${part1(testInput)}" }
-    //check(part2(testInput) == 2858L) { "part2 - testInput should return 2858, returns ${part2(testInput)}" }
+    check(part1(testInput) == 1928L) { "part1 - testInput should return 1928, returned ${part1(testInput)}" }
+    check(part2(testInput) == 2858L) { "part2 - testInput should return 2858, returns ${part2(testInput)}" }
 
     val input = getDecompactedFilesystem(readInput("Day09").first())
-//    part1(input).println()
+    part1(input).println()
     part2(input).println()
 }
