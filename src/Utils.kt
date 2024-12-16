@@ -49,8 +49,37 @@ fun goEastPoint(point: Pair<Int, Int>): Pair<Int, Int> = goEast(point.first, poi
 fun goWestPoint(point: Pair<Int, Int>): Pair<Int, Int> = goWest(point.first, point.second)
 
 enum class Direction {
-    NORTH, SOUTH, WEST, EAST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST
+    NORTH {
+        override fun getMove() = ::goNorth
+    }, SOUTH {
+        override fun getMove() = ::goSouth
+    }, WEST {
+        override fun getMove() = ::goWest
+    }, EAST {
+        override fun getMove() = ::goEast
+    }, NORTHEAST {
+        override fun getMove() = ::goNortheast
+    }, NORTHWEST {
+        override fun getMove() = ::goNorthwest
+    }, SOUTHEAST {
+        override fun getMove() = ::goSoutheast
+    }, SOUTHWEST {
+        override fun getMove() = ::goSouthwest
+    };
+    abstract fun getMove(): (Int, Int) -> Pair<Int, Int>
 }
+
+
+val directionToFunction = mapOf(
+    Direction.NORTH to ::goNorth,
+    Direction.EAST to ::goEast,
+    Direction.SOUTH to ::goSouth,
+    Direction.WEST to ::goWest,
+    Direction.NORTHEAST to ::goNortheast,
+    Direction.NORTHWEST to ::goNorthwest,
+    Direction.SOUTHWEST to ::goSouthwest,
+    Direction.SOUTHEAST to ::goSoutheast,
+)
 
 fun indexIsInBounds(index: Pair<Int, Int>, grid: List<List<Any>>): Boolean =
     index.first >= 0 && index.first < grid.size && index.second >= 0 && index.second < grid.first().size

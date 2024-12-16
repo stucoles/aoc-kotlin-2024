@@ -19,17 +19,6 @@ fun main() {
         else -> throw Exception("Unknown input")
     }
 
-    val moveMap = mapOf(
-        Direction.NORTH to ::goNorth,
-        Direction.EAST to ::goEast,
-        Direction.SOUTH to ::goSouth,
-        Direction.WEST to ::goWest,
-        Direction.NORTHEAST to ::goNortheast,
-        Direction.NORTHWEST to ::goNorthwest,
-        Direction.SOUTHWEST to ::goSouthwest,
-        Direction.SOUTHEAST to ::goSouthwest,
-    )
-
     val directionMap = mapOf(
         Direction.NORTH to '^',
         Direction.EAST to '>',
@@ -51,7 +40,7 @@ fun main() {
             var nextindex = move(currentIndex.first, currentIndex.second)
             while (indexIsInBounds(nextindex, grid) && grid[nextindex.first][nextindex.second] == '#') {
                 direction = getDirection(direction)
-                move = moveMap[direction] ?: throw Exception("Unknown direction")
+                move = directionToFunction[direction] ?: throw Exception("Unknown direction")
                 nextindex = move(index.first, index.second)
             }
             return nextindex
