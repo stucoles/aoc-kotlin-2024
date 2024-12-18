@@ -51,22 +51,24 @@ fun goWestPoint(point: Pair<Int, Int>): Pair<Int, Int> = goWest(point.first, poi
 enum class Direction {
     NORTH {
         override fun getMove() = ::goNorth
+        override fun rotateClockwise() = EAST
+        override fun rotateCounterClockwise() = WEST
     }, SOUTH {
         override fun getMove() = ::goSouth
+        override fun rotateClockwise() = WEST
+        override fun rotateCounterClockwise() = EAST
     }, WEST {
         override fun getMove() = ::goWest
+        override fun rotateClockwise() = NORTH
+        override fun rotateCounterClockwise() = SOUTH
     }, EAST {
         override fun getMove() = ::goEast
-    }, NORTHEAST {
-        override fun getMove() = ::goNortheast
-    }, NORTHWEST {
-        override fun getMove() = ::goNorthwest
-    }, SOUTHEAST {
-        override fun getMove() = ::goSoutheast
-    }, SOUTHWEST {
-        override fun getMove() = ::goSouthwest
+        override fun rotateClockwise() = SOUTH
+        override fun rotateCounterClockwise() = NORTH
     };
     abstract fun getMove(): (Int, Int) -> Pair<Int, Int>
+    abstract fun rotateClockwise(): Direction
+    abstract fun rotateCounterClockwise(): Direction
 }
 
 
@@ -75,10 +77,6 @@ val directionToFunction = mapOf(
     Direction.EAST to ::goEast,
     Direction.SOUTH to ::goSouth,
     Direction.WEST to ::goWest,
-    Direction.NORTHEAST to ::goNortheast,
-    Direction.NORTHWEST to ::goNorthwest,
-    Direction.SOUTHWEST to ::goSouthwest,
-    Direction.SOUTHEAST to ::goSoutheast,
 )
 
 fun indexIsInBounds(index: Pair<Int, Int>, grid: List<List<Any>>): Boolean =

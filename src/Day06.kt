@@ -16,7 +16,6 @@ fun main() {
         Direction.EAST -> Direction.SOUTH
         Direction.SOUTH -> Direction.WEST
         Direction.WEST -> Direction.NORTH
-        else -> throw Exception("Unknown input")
     }
 
     val directionMap = mapOf(
